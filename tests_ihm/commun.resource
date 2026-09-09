@@ -16,8 +16,14 @@ ${TITRE PAGE TABLEAU DE BORD}    Tableau de bord - Livraison 3
 
 *** Keywords ***
 Ouvrir Le Navigateur Et Accéder A L'Application
-    Open Browser    ${URL}     ${NAVIGATEUR}
-    Maximize Browser Window
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].EdgeOptions()    sys, selenium.webdriver
+    Call Method    ${options}    add_argument    --headless=new
+    Call Method    ${options}    add_argument    --disable-gpu
+    Call Method    ${options}    add_argument    --no-sandbox
+    Call Method    ${options}    add_argument    --disable-dev-shm-usage
+    Call Method    ${options}    add_argument    --window-size=1920,1080
+    Create Webdriver    Edge    options=${options}
+    Go To    ${URL}
 
 Accéder A La Page De Connexion
     Click Element    ${LIEN SE CONNECTER} 
@@ -34,4 +40,3 @@ Saisir Le Mot De Passe
 
 Soumette Le Formulaire De Connexion
     Click Button    ${BOUTON SE CONNECTER}
-
