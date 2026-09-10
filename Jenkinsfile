@@ -11,23 +11,22 @@ pipeline {
         }
 
         stage('Tests unitaires') {
-            steps {
-                bat '.\\run_tests_unitaires.bat'
-            }
-        }
-
-        stage('Tests API') {
-            steps {
-                bat '.\\run_tests_api.bat'
-            }
-        }
-
-        stage('Tests IHM') {
-            steps {
-                bat '.\\run_tests_ihm.bat'
-            }
-        }
+    steps {
+        bat '.\\run_unitaire.bat'
     }
+}
+
+stage('Tests API') {
+    steps {
+        bat '.\\run_api.bat'
+    }
+}
+
+stage('Tests IHM') {
+    steps {
+        bat '.\\run_ihm.bat'
+    }
+}
 
     post {
         success {
