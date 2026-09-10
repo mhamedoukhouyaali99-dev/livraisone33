@@ -1,17 +1,16 @@
+```groovy
 pipeline {
     agent any
 
     stages {
-        stage('Récupération du code') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/mhamedoukhouyaali99-dev/livraisone33.git'
-            }
-        }
+
         stage('Vérification environnement') {
             steps {
                 bat 'where python'
                 bat 'python --version'
+                bat 'python -m pip --version'
+            }
+        }
 
         stage('Tests unitaires') {
             steps {
@@ -36,9 +35,10 @@ pipeline {
         success {
             echo 'Tous les tests ont réussi'
         }
+
         failure {
             echo 'Au moins un test a échoué'
         }
     }
 }
-
+```
