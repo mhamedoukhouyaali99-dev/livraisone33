@@ -1,6 +1,5 @@
 @echo off
+cd /d "%~dp0"
 echo Lancement des tests d'API...
-
-cd tests_api
-robot .
-
+robot tests_api
+exit /b %ERRORLEVEL%
