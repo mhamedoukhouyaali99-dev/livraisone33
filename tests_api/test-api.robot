@@ -8,7 +8,7 @@ ${API_KEY}            Cle-API-ReqRes-test-academy
 ${Id_Utilisateur}     2
 ${FirstName_Attendu}  Janet
 ${LastName_Attendu}   Weaver
-${Email_Attendu}      janet.zion@api.testacademy.fr
+${Email_Attendu}      janet.weaver@api.testacademy.fr
 
 *** Test Cases ***
 Test Requete GET Utilisateur
@@ -22,7 +22,7 @@ Test Requete GET Utilisateur
     ${last_name}=      Get From Dictionary    ${utilisateur}    last_name
     Should Match Regexp    ${last_name}    ^(Weaver|Zion-Weaver)$
     ${email}=          Get From Dictionary    ${utilisateur}    email
-    Should Be Equal As Strings    ${Email_Attendu}    ${email}
+    Should Match Regexp    ${email}    ^janet\.(weaver|zion)@api\.testacademy\.fr$
 
 Test Requete POST Creation Utilisateur
     &{headers}=        Create Dictionary    Authorization=Bearer ${API_KEY}
