@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-
         stage('Récupération du code') {
             steps {
                 git branch: 'main',
@@ -11,22 +10,23 @@ pipeline {
         }
 
         stage('Tests unitaires') {
-    steps {
-        bat '.\\run_unitaire.bat'
-    }
-}
+            steps {
+                bat '.\\run_unitaire.bat'
+            }
+        }
 
-stage('Tests API') {
-    steps {
-        bat '.\\run_api.bat'
-    }
-}
+        stage('Tests API') {
+            steps {
+                bat '.\\run_api.bat'
+            }
+        }
 
-stage('Tests IHM') {
-    steps {
-        bat '.\\run_ihm.bat'
+        stage('Tests IHM') {
+            steps {
+                bat '.\\run_ihm.bat'
+            }
+        }
     }
-}
 
     post {
         success {
@@ -37,3 +37,4 @@ stage('Tests IHM') {
         }
     }
 }
+
