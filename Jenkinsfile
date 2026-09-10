@@ -8,6 +8,10 @@ pipeline {
                     url: 'https://github.com/mhamedoukhouyaali99-dev/livraisone33.git'
             }
         }
+        stage('Vérification environnement') {
+            steps {
+                bat 'where python'
+                bat 'python --version'
 
         stage('Tests unitaires') {
             steps {
