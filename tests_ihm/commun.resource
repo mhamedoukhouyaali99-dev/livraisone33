@@ -5,7 +5,7 @@ Library     Selenium2Library
 
 
 *** Variables ***
-# --- Configuration de base yyyy--
+# --- Configuration de base ---
 ${URL}            http://livraison3.testacademy.fr
 ${NAVIGATEUR}      chrome
 
