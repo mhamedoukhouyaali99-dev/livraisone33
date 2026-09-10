@@ -1,9 +1,10 @@
+cat > ./tests_ihm/commun.resource << 'EOF'
 *** Settings ***
 Library    Selenium2Library
 
 *** Variables ***
 ${URL}    http://livraison3.testacademy.fr
-${NAVIGATEUR}    Edge
+${NAVIGATEUR}    Chrome
 ${LIEN SE CONNECTER}    xpath=//a[contains(text(),'Se connecter')]
 ${LIEN SE DECONNECTER}    xpath=(//a[contains(text(),'Se déconnecter')])[3]
 ${CHAMP NOM UTILISATEUR}    name=username
@@ -16,13 +17,13 @@ ${TITRE PAGE TABLEAU DE BORD}    Tableau de bord - Livraison 3
 
 *** Keywords ***
 Ouvrir Le Navigateur Et Accéder A L'Application
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].EdgeOptions()    sys, selenium.webdriver
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${options}    add_argument    --headless\=new
     Call Method    ${options}    add_argument    --disable-gpu
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     Call Method    ${options}    add_argument    --window-size\=1920,1080
-    Create Webdriver    Edge    options=${options}
+    Create Webdriver    Chrome    options=${options}
     Go To    ${URL}
 
 Accéder A La Page De Connexion
