@@ -15,7 +15,7 @@ Test Requete GET Utilisateur
     &{headers}=        Create Dictionary    Authorization=Bearer ${API_KEY}
     ${Reponse}=        GET    ${Base_URL}api/users/${Id_Utilisateur}    headers=${headers}    expected_status=200
     Log                ${Reponse.json()}
-    Dictionary Should Contain Key    ${Reponse.json()}    data
+    Dictionary Should Contain Key    ${Reponse.json()}    data 
     ${utilisateur}=    Get From Dictionary    ${Reponse.json()}    data
     ${first_name}=     Get From Dictionary    ${utilisateur}    first_name
     Should Be Equal As Strings    ${FirstName_Attendu}    ${first_name}
